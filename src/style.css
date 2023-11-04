@@ -13,7 +13,7 @@ span {
 }
 
 body {
-    background-color: #2f3437;
+    background-color: #444c56;
     color: #FFFEDF;
     font-family: 'Open Sans', sans-serif;
 }
@@ -168,7 +168,7 @@ a {
     position: absolute;
 }
 
-.fullcicle,
+.fullycycle,
 .completed {
     clear: both;
     width: 100%;
@@ -211,7 +211,9 @@ a {
     padding: 10rem 20rem;
     background-color: #2ecc71;
     color: #FFFEDF;
-    border: none;
+    border: 2px solid #2ecc71;
+    border-radius: 4px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -239,6 +241,8 @@ ul#taskList {
 }
 
 .todo-item .task-text {
+    font-size: 18rem;
+    color: #202429;
     flex-grow: 1;
 }
 
@@ -247,4 +251,9 @@ ul#taskList {
     font-weight: bold;
     color: #e74c3c;
     font-size: 20rem;
+}
+
+.completed-task .task-text {
+    text-decoration: line-through; /* Adiciona uma linha no texto */
+    color: #7f8c8d; /* Define uma cor diferente para as tarefas concluídas, ajuste conforme necessário */
 }

@@ -3,6 +3,8 @@ let pauseAudio = new Audio("./assets/pause.mp3");
 let backwardAudio = new Audio("./assets/backward.mp3");
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Pomodoro 
+
   let sessionLength = 25;
   let breakLength = 5;
   let isSession = true;
@@ -57,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (completed > 3) {
         timeLeft = 25 * 60;
-        document.querySelector(".fullcicle").textContent = "🌳";
+        document.querySelector(".fullycycle").textContent = "🌳";
       } else {
         for (i = 0; i < completed; i++)
           document.querySelector(".completed").textContent += "🍅";
@@ -122,9 +124,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.querySelector(".control.is").addEventListener("click", function () {
-    if (sessionLength < 100) {
-      sessionLength++;
+  document
+    .querySelector(".control.increment-pomo")
+    .addEventListener("click", function () {
+      if (sessionLength < 100) {
+        sessionLength++;
+        pausePomodoro();
+        if (isSession) {
+          timeLeft = sessionLength * 60;
+        } else {
+          timeLeft = breakLength * 60;
+        }
+        document.querySelector(".pomodoro>.time-left").textContent =
+          getFormattedTime();
+        updateSettingsTimeValues();
+      }
+    });
+
+  document
+    .querySelector(".control.decrement-pomo")
+    .addEventListener("click", function () {
+      if (sessionLength > 1) {
+        sessionLength--;
+        pausePomodoro();
+        if (isSession) {
+          timeLeft = sessionLength * 60;
+        } else {
+          timeLeft = breakLength * 60;
+        }
+        document.querySelector(".pomodoro>.time-left").textContent =
+          getFormattedTime();
+        updateSettingsTimeValues();
+      }
+    });
+
+  document
+    .querySelector(".control.increment-pause")
+    .addEventListener("click", function () {
+      breakLength++;
       pausePomodoro();
       if (isSession) {
         timeLeft = sessionLength * 60;
@@ -134,54 +171,27 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".pomodoro>.time-left").textContent =
         getFormattedTime();
       updateSettingsTimeValues();
-    }
-  });
+    });
 
-  document.querySelector(".control.ds").addEventListener("click", function () {
-    if (sessionLength > 1) {
-      sessionLength--;
-      pausePomodoro();
-      if (isSession) {
-        timeLeft = sessionLength * 60;
-      } else {
-        timeLeft = breakLength * 60;
+  document
+    .querySelector(".control.decrement-pause")
+    .addEventListener("click", function () {
+      if (breakLength > 1) {
+        breakLength--;
+        pausePomodoro();
+        if (isSession) {
+          timeLeft = sessionLength * 60;
+        } else {
+          timeLeft = breakLength * 60;
+        }
+        document.querySelector(".pomodoro>.time-left").textContent =
+          getFormattedTime();
+        updateSettingsTimeValues();
       }
-      document.querySelector(".pomodoro>.time-left").textContent =
-        getFormattedTime();
-      updateSettingsTimeValues();
-    }
-  });
+    });
 
-  document.querySelector(".control.ib").addEventListener("click", function () {
-    breakLength++;
-    pausePomodoro();
-    if (isSession) {
-      timeLeft = sessionLength * 60;
-    } else {
-      timeLeft = breakLength * 60;
-    }
-    document.querySelector(".pomodoro>.time-left").textContent =
-      getFormattedTime();
-    updateSettingsTimeValues();
-  });
+  //   To-Do List
 
-  document.querySelector(".control.db").addEventListener("click", function () {
-    if (breakLength > 1) {
-      breakLength--;
-      pausePomodoro();
-      if (isSession) {
-        timeLeft = sessionLength * 60;
-      } else {
-        timeLeft = breakLength * 60;
-      }
-      document.querySelector(".pomodoro>.time-left").textContent =
-        getFormattedTime();
-      updateSettingsTimeValues();
-    }
-  });
-
-  //   TODO List
-  
   function addTask() {
     const newTaskInput = document.getElementById("newTask");
     const taskText = newTaskInput.value.trim();
@@ -196,23 +206,27 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       taskList.appendChild(taskItem);
-
-      // Limpa o campo de entrada
       newTaskInput.value = "";
 
-      // Adiciona um evento de clique para excluir a tarefa
       const deleteButton = taskItem.querySelector(".delete-task");
       deleteButton.addEventListener("click", function () {
-        taskList.removeChild(taskItem);
+        if (taskItem.classList.contains("completed-task")) {
+          taskItem.classList.remove("completed-task");
+        } else {
+          markTaskAsCompleted(taskItem);
+          taskList.appendChild(taskItem);
+        }
       });
     }
   }
 
-  // Evento de clique para adicionar tarefa
+  function markTaskAsCompleted(taskItem) {
+    taskItem.classList.add("completed-task");
+  }
+
   const addTaskButton = document.getElementById("addTask");
   addTaskButton.addEventListener("click", addTask);
 
-  // Evento de pressionar Enter para adicionar tarefa
   document
     .getElementById("newTask")
     .addEventListener("keyup", function (event) {
