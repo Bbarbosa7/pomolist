@@ -1,16 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 
+/* Adicione ou ajuste estas regras no seu CSS */
+
+.navbar {
+    font-size: 18px;
+    background-color: #444c56 !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-size: inherit;
+}
+
+.nav-link {
+    color: #2ecc71;
+}
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
     vertical-align: baseline;
-    font-size: 0.7px;
 }
 
-span {
-    font-size: 25rem !important;
-}
 
 body {
     background-color: #444c56;
@@ -24,27 +36,35 @@ a {
     font-weight: 600
 }
 
+.footer-text {
+    color: #2ecc71 !important;
+    text-decoration: none;
+}
+
 .center {
-    text-shadow: 0rem 1rem 1rem #191919;
     cursor: default;
-    width: 450rem;
+    width: 100%;
+    padding-right: 15%;
+    padding-left: 15%;
     margin: auto;
-    display: block;
+    display: flexbox;
+    justify-content: space-between;
     position: relative;
 }
 
 .title {
-    padding-top: 10rem;
+    padding-top: 10px;
     width: 100%;
     font-weight: 600;
     text-align: center;
-    font-size: 45rem;
-    padding-bottom: 15rem;
+    font-size: 24px;
+    padding-bottom: 15px;
 }
 
 .settings {
-    width: 350rem;
-    padding-bottom: 15rem;
+    width: 100%;
+    padding-right: 30%;
+    padding-left: 30%;
     display: table;
     margin: auto;
     position: relative;
@@ -58,16 +78,8 @@ a {
     user-select: none;
 }
 
-.description {
-    font-size: 20rem;
-}
-
-.value {
-    font-size: 30rem;
-}
-
 .session {
-    width: 108rem;
+    width: auto;
     float: right;
 }
 
@@ -76,7 +88,7 @@ a {
 }
 
 .break {
-    width: 100rem;
+    width: auto;
     float: left;
 }
 
@@ -85,7 +97,6 @@ a {
 }
 
 .control {
-    font-size: 33rem;
     cursor: pointer;
 }
 
@@ -94,39 +105,37 @@ a {
 }
 
 .next-pomodoro {
-    margin-left: 30rem;
+    margin: 0 auto;
+    padding-left: 30%;
+    padding-right: 10%;
     float: left;
     cursor: pointer;
     font-weight: bold;
 }
 
 .reset-pomodoro {
-    margin-right: 30rem;
-    float: right;
+    margin: 0 auto;
+    padding-left: 17%;
+    float: left;
     cursor: pointer;
     font-weight: bold;
 }
 
-.next-pomodoro span,
-.reset-pomodoro span {
-    font-size: 20rem !important;
-}
-
 .pomodoro {
     cursor: pointer;
-    width: 300rem;
-    height: 300rem;
+    width: 12.5rem;
+    height: 12.5rem;
     margin: auto;
     clear: both;
     border-radius: 50%;
-    border: 3rem #2ecc71 solid;
+    border: 3px #2ecc71 solid;
     position: relative;
     overflow: hidden;
     text-shadow: none;
 }
 
 .fill {
-    width: 100%;
+    width: auto;
     height: 0%;
     border-radius: 50%;
     border: 3 rem #2ecc71 solid;
@@ -147,57 +156,49 @@ a {
 }
 
 .time-left {
-    top: 32%;
-    left: 50%;
-    margin-left: -125rem;
-    width: 250rem;
+    width: auto;
+    margin: 50px 10px 10px 10px;
+    font-size: 2.5rem;
     text-align: center;
-    font-size: 60rem;
-    z-index: 4;
-    position: absolute;
 }
 
 .status {
-    bottom: 35%;
-    left: 50%;
-    margin-left: -125rem;
-    width: 250rem;
+    width: auto;
     text-align: center;
-    font-size: 15rem;
-    z-index: 4;
-    position: absolute;
 }
 
 .fullycycle,
 .completed {
-    clear: both;
     width: 100%;
-    padding-top: 20rem;
-    font-size: 12rem;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    font-size: 14px;
     text-align: center;
+    margin: 0 auto;
 }
 
+
 .completed {
-    padding-top: 10rem;
-    padding-bottom: 25rem;
+    padding-top: 10px;
 }
 
 /* TO-DO List */
-.todo-list {
-    width: 350rem;
-    padding: 15rem;
-    margin: auto;
-    text-align: center;
-    padding-top: 7%;
-}
 
-.todo-list h2 {
-    font-size: 25rem;
+.todo-text {
+    margin: 0 auto;
+    /* display: flow; */
+}
+.todo-list {
+    width: 100%;
+    padding-top: 5%;
+    padding-right: 15%;
+    padding-left: 15%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #newTask {
-    width: 100%;
-    font-size: 18rem;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -207,8 +208,6 @@ a {
 }
 
 #addTask {
-    font-size: 18rem;
-    padding: 10rem 20rem;
     background-color: #2ecc71;
     color: #FFFEDF;
     border: 2px solid #2ecc71;
@@ -217,11 +216,18 @@ a {
     cursor: pointer;
 }
 
+.list-group {
+    width: 55%;
+    padding: 12px 20px;
+    margin: 8px auto; /* Altere 'auto' para '0' se necessário */
+}
+
+
 #addTask:hover {
     background-color: #27ae60;
 }
 
-ul#taskList {
+ul #taskList {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -237,23 +243,40 @@ ul#taskList {
     padding: 10px;
     margin: 5px 0;
     background-color: #FFFEDF;
-    font-size: 18rem;
 }
 
 .todo-item .task-text {
-    font-size: 18rem;
     color: #202429;
     flex-grow: 1;
+    overflow-wrap: anywhere;
 }
 
 .delete-task {
     cursor: pointer;
     font-weight: bold;
     color: #e74c3c;
-    font-size: 20rem;
 }
 
 .completed-task .task-text {
-    text-decoration: line-through; /* Adiciona uma linha no texto */
-    color: #7f8c8d; /* Define uma cor diferente para as tarefas concluídas, ajuste conforme necessário */
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+
+/* Media Query's */
+/* Adicione a media query para ajustar o padding em telas de smartphones */
+@media only screen and (max-width: 770px) {
+    .settings{
+        padding-right: 15%;
+        padding-left: 15%;
+    }
+    
+    .todo-list {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+    
+    /* .todo-text {
+        font-size: 15px; /* ou ajuste conforme necessário
+    } */
 }

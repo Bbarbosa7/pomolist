@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     isPaused = true;
     clearInterval(intervalCounter);
-    document.querySelector(".status").textContent = "Clique Para Começar";
+    document.querySelector(".status").textContent = "Tap to start";
   }
 
   function nextStep() {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isPaused = false;
     isSession = !isSession;
     nextStep();
-    document.querySelector(".status").textContent = "Clique Para Pausar";
+    document.querySelector(".status").textContent = "Tap to stop";
   }
 
   document.querySelector(".pomodoro>.time-left").textContent =
